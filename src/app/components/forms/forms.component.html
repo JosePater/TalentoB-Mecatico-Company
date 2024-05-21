@@ -1,22 +1,80 @@
 <form [formGroup]="buyForm" class="max-w-sm mx-auto" (ngSubmit)="ordenar()">
-    <div class="mb-5">
-        <label for="typeID" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccionar tipo de documento:</label>
-        <select id="typeID" formControlName="typeID" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            <!-- <option selected>Seleccionar tipo de documento</option> -->
-            <option selected value="Cédula">Cédula</option>
-            <option value="NIT">NIT</option>
-        </select>
-    </div>
-    @if (typeID) {
-        <div class="mb-5">
-          <label for="numID" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ingrese su número de {{typeID}}:</label>
-          <input type="numID" id="numID" formControlName="numID" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="1100500600" required />
-        </div>
+  <div class="mb-5">
+    <label
+      for="typeID"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Seleccionar tipo de documento:</label
+    >
+    <select
+      id="typeID"
+      formControlName="typeID"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-indigo-500 focus:bg-blue-50 focus:ring-2 focus:ring-indigo-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+      [ngClass]="{
+        'border-red-500': hasErrors('typeID', 'required'),
+        'border-green-600':
+          !hasErrors('typeID', 'required') && tocarCampo('typeID')
+      }"
+    >
+      <option selected value="Cédula">Cédula</option>
+      <option value="NIT">NIT</option>
+    </select>
+  </div>
+  @if (typeID) {
+  <div class="mb-5">
+    <label
+      for="numID"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Ingrese su número de {{ typeID }}:</label
+    >
+    <input
+      type="numID"
+      id="numID"
+      formControlName="numID"
+      class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 focus:bg-blue-50 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:shadow-sm-light"
+      placeholder="1100500600"
+      [ngClass]="{
+        'border-red-500':
+          hasErrors('numID', 'required') || hasErrors('numID', 'minlength'),
+        'border-green-600':
+          !hasErrors('numID', 'required') && tocarCampo('numID')
+      }"
+    />
+    @if (hasErrors('numID','required')) {
+    <span class="text-red-600 text-sm">* Número de {{ typeID }} requerido</span>
+    } @if (hasErrors('numID', 'minlength')) {
+    <span class="text-red-600 text-sm">* Mínimo 6 caracteres</span>
     }
-    <div class="mb-5">
-      <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ingrese su número de teléfono:</label>
-      <input type="phone" id="phone" formControlName="phone" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="321 456 7890" required />
-    </div>
-    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Ordenar</button>
-  </form>
-  
+  </div>
+  }
+  <div class="mb-5">
+    <label
+      for="phone"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Ingrese su número de teléfono:</label
+    >
+    <input
+      type="phone"
+      id="phone"
+      formControlName="phone"
+      class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+      placeholder="321 456 7890"
+      [ngClass]="{
+        'border-red-500':
+          hasErrors('phone', 'required') || hasErrors('phone', 'minlength'),
+        'border-green-600':
+          !hasErrors('phone', 'required') && tocarCampo('phone')
+      }"
+    />
+    @if (hasErrors('phone','required')) {
+    <span class="text-red-600 text-sm">* Número de teléfono requerido</span>
+    } @if (hasErrors('phone', 'minlength')) {
+    <span class="text-red-600 text-sm">* Mínimo 10 caracteres</span>
+    }
+  </div>
+  <button
+    type="submit"
+    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+  >
+    Ordenar
+  </button>
+</form>
