@@ -26,17 +26,34 @@ MECATICO COMPANY se especializa en la distribución de mecato a tiendas de barri
    - Nombre y apellido(s)
    - Su número de teléfono
    - Al menos tres productos que desee ordenar
-2. Los datos ingresados en el formulario son recopilados y descargados en un archivo PDF, el cual incluye el nombre de la empresa y un título descriptivo.
+2. Los datos ingresados en el formulario son recopilados y descargados en un archivo PDF, el cual incluye:
+   - Nombre de la empresa
+   - Título descriptivo
+   - Fecha de generación de la orden
+   - Información del cliente
+   - Lista de productos con sus respectivos precios
+   - Total a pagar
 
 ### Esta página web también cuenta con:
 - Componentes de Angular para una organización modular y mantenible de la aplicación.
+- Tipado de datos (interface.ts)
 - Implementación de estilos CSS con TailwindCSS
+- Seguimiento de commits con GIT
 
 ### Más funcionalidades
-- Interfaz de usuario con validación de datos y selección de productos mediante una lista checkbox.
+- Interfaz de usuario con validación de datos
+- Selección de productos mediante una lista checkbox.
+- Tabla de la lista de productos con orden generada
 
 #
 
+## Adaptabilidad
+Esta aplicación web está diseñada para ofrecer una experiencia óptima tanto en dispositivos móviles como en computadoras de escritorio. La interfaz es totalmente responsiva, lo que garantiza que los clientes puedan generar sus órdenes de compra de manera eficiente sin importar el dispositivo que estén utilizando. 
+
+- **Diseño Responsivo:** La aplicación ajusta automáticamente su diseño y disposición para adaptarse a cualquier tamaño de pantalla, proporcionando una experiencia de usuario fluida en smartphones, tablets y computadoras de escritorio.
+- **Optimización para Móviles:** Los elementos de la interfaz y los formularios están optimizados para ser utilizados fácilmente en pantallas táctiles.
+
+#
 ## Página desplegada
 Acceso a la página web desplegada en el siguiente enlace: 
 
