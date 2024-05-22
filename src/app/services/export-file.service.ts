@@ -44,8 +44,8 @@ export class ExportFileService {
     doc.setFont('helvetica', 'bold'); // Texto en negrita
     doc.text('Datos del cliente: ', this.col, this.row+=20);
     doc.setFont('helvetica', 'normal'); // Texto normal
-    doc.text(`Tipo de documento: ${formData.typeID}`, this.col, this.row+=10);
     doc.text(`Número de ${formData.typeID}: ${formData.numID}`, this.col, this.row+=10);
+    doc.text(`Nombre: ${formData.name} ${formData.lastname}`, this.col, this.row+=10);
     doc.text(`Teléfono: ${formData.phone}`, this.col, this.row+=10);
     doc.setFont('helvetica', 'bold'); // Texto en negrita
     doc.text('Productos ordenados:', this.col, this.row+=20);

@@ -15,7 +15,7 @@
           !hasErrors('typeID', 'required') && wasItTouched('typeID')
       }"
     >
-      <option selected value="Cédula">Cédula</option>
+      <option value="Cédula">Cédula</option>
       <option value="NIT">NIT</option>
     </select>
   </div>
@@ -46,6 +46,59 @@
     }
   </div>
   }
+
+  <div class="mb-5">
+    <label
+      for="name"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Ingrese su nombre:</label
+    >
+    <input
+      type="name"
+      id="name"
+      formControlName="name"
+      class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 focus:bg-blue-50 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:shadow-sm-light"
+      placeholder="José Luis"
+      [ngClass]="{
+        'border-red-500':
+          hasErrors('name', 'required') || hasErrors('name', 'minlength'),
+        'border-green-600':
+          !hasErrors('name', 'required') && wasItTouched('name')
+      }"
+    />
+    @if (hasErrors('name','required')) {
+    <span class="text-red-600 text-sm">* Nombre requerido</span>
+    } @if (hasErrors('name', 'minlength')) {
+    <span class="text-red-600 text-sm">* Mínimo 3 caracteres</span>
+    }
+  </div>
+
+  <div class="mb-5">
+    <label
+      for="lastname"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Ingrese su(s) apellido(s):</label
+    >
+    <input
+      type="lastname"
+      id="lastname"
+      formControlName="lastname"
+      class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 focus:bg-blue-50 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:shadow-sm-light"
+      placeholder="Paternina Martínez"
+      [ngClass]="{
+        'border-red-500':
+          hasErrors('lastname', 'required') || hasErrors('lastname', 'minlength'),
+        'border-green-600':
+          !hasErrors('lastname', 'required') && wasItTouched('lastname')
+      }"
+    />
+    @if (hasErrors('lastname','required')) {
+    <span class="text-red-600 text-sm">* Apellido(s) requerido(s)</span>
+    } @if (hasErrors('lastname', 'minlength')) {
+    <span class="text-red-600 text-sm">* Mínimo 3 caracteres</span>
+    }
+  </div>
+
   <div class="mb-5">
     <label
       for="phone"
@@ -115,7 +168,6 @@
         Generar PDF
       </button>
     }
-
   </div>
 
 </form>

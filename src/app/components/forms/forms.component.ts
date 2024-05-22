@@ -43,6 +43,8 @@ export class FormsComponent implements OnInit {
     this.buyForm = this.formBuilder.group({
       typeID: ['', Validators.required],
       numID: ['', [Validators.required, Validators.minLength(6)]],
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      lastname: ['', [Validators.required, Validators.minLength(3)]],
       phone: ['', [Validators.required, Validators.minLength(10)]],
       checkboxes: this.formBuilder.array([], [this.minSelectedCheckboxes(3)]),
     });
