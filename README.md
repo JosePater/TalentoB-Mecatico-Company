@@ -10,8 +10,6 @@
 ## Desarrollador:
 | [<img src="https://avatars.githubusercontent.com/u/120583187?v=4" width=115><br><sub>José Luis Paternina Martínez</sub>](https://github.com/JosePater) 
 | :---: | 
-
-
 #
 ## Descripción
 
@@ -37,9 +35,16 @@ MECATICO COMPANY se especializa en la distribución de mecato a tiendas de barri
 ### Más funcionalidades
 - Interfaz de usuario con validación de datos y selección de productos mediante una lista checkbox.
 
+#
 
-##
+## Página desplegada
+Acceso a la página web desplegada en el siguiente enlace: 
 
+👉 [MECATICO COMPANY - Generación de Órdenes de Compra](https://mecatico-company.netlify.app/) 👈
+
+
+#
+#
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.3.
 
 ## Development server
