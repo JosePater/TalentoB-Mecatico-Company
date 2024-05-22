@@ -10,5 +10,5 @@ import { FormsComponent } from './components/forms/forms.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'TalentoB-Mecatico-Company';
+  title = 'Distribuidora MECATICO COMPANY';
 }
