@@ -2,13 +2,13 @@
   <div class="mb-5">
     <label
       for="typeID"
-      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      class="block mb-2 text-sm font-medium text-gray-900"
       >Seleccionar tipo de documento:</label
     >
     <select
       id="typeID"
       formControlName="typeID"
-      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-indigo-500 focus:bg-blue-50 focus:ring-2 focus:ring-indigo-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-indigo-500 focus:bg-blue-50 focus:ring-2 focus:ring-indigo-200 block w-full p-2.5"
       [ngClass]="{
         'border-red-500': hasErrors('typeID', 'required'),
         'border-green-600':
@@ -23,14 +23,14 @@
   <div class="mb-5">
     <label
       for="numID"
-      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      class="block mb-2 text-sm font-medium text-gray-900"
       >Ingrese su número de {{ typeID }}:</label
     >
     <input
       type="numID"
       id="numID"
       formControlName="numID"
-      class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 focus:bg-blue-50 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:shadow-sm-light"
+      class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 focus:bg-blue-50 block w-full p-2.5"
       placeholder="1100500600"
       [ngClass]="{
         'border-red-500':
@@ -50,14 +50,14 @@
   <div class="mb-5">
     <label
       for="name"
-      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      class="block mb-2 text-sm font-medium text-gray-900"
       >Ingrese su nombre:</label
     >
     <input
       type="name"
       id="name"
       formControlName="name"
-      class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 focus:bg-blue-50 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:shadow-sm-light"
+      class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 focus:bg-blue-50 block w-full p-2.5"
       placeholder="José Luis"
       [ngClass]="{
         'border-red-500':
@@ -76,14 +76,14 @@
   <div class="mb-5">
     <label
       for="lastname"
-      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      class="block mb-2 text-sm font-medium text-gray-900"
       >Ingrese su(s) apellido(s):</label
     >
     <input
       type="lastname"
       id="lastname"
       formControlName="lastname"
-      class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 focus:bg-blue-50 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:shadow-sm-light"
+      class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 focus:bg-blue-50 block w-full p-2.5"
       placeholder="Paternina Martínez"
       [ngClass]="{
         'border-red-500':
@@ -102,14 +102,14 @@
   <div class="mb-5">
     <label
       for="phone"
-      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      class="block mb-2 text-sm font-medium text-gray-900"
       >Ingrese su número de teléfono:</label
     >
     <input
       type="phone"
       id="phone"
       formControlName="phone"
-      class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+      class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
       placeholder="321 456 7890"
       [ngClass]="{
         'border-red-500':
@@ -127,15 +127,15 @@
 
   <label
     for="checkboxes"
-    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    class="block mb-2 text-sm font-medium text-gray-900"
     >Seleccione los productos a ordenar:</label
   >
-  <p class="text-sm text-gray-900 dark:text-white">Paquetes x 10 unidades</p>
+  <p class="text-sm text-gray-900">Paquetes x 10 unidades</p>
   <ul formArrayName="checkboxes" class="grid w-full my-2 gap-6 md:grid-cols-3">
     @for (product of products; track $index) {
       <li>
           <input type="checkbox" id="{{product.id}}" [formControlName]="$index" value="{{product.name}}" class="hidden peer" required="">
-          <label for="{{product.id}}" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+          <label for="{{product.id}}" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 hover:text-gray-600 peer-checked:text-gray-600 hover:bg-gray-50">                           
               <div class="block">
                 <div class="w-full text-sm font-semibold">{{product.name}}</div>
                   <div class="w-full text-sm">{{product.price}}</div>
@@ -152,15 +152,15 @@
   <!-- Lista de la orden de los productos -->
   @if (productosSeleccionados) {
     <div class="relative mt-4 overflow-x-auto shadow-md sm:rounded-lg">
-      <h3 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lista de la orden de los productos:</h3>
-      <h4 class="block mb-2 text-sm text-gray-900 dark:text-white">
+      <h3 class="block mb-2 text-sm font-medium text-gray-900">Lista de la orden de los productos:</h3>
+      <h4 class="block mb-2 text-sm text-gray-900">
         Orden generada por: {{dataForm.name +' '+ dataForm.lastname}}
       </h4>
-      <table id="tablaProductos" 
-        class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+      <table
+        class="w-full text-sm text-left rtl:text-right text-gray-500"
       >
         <thead
-          class="text-xs text-gray-700 uppercase bg-indigo-100 dark:bg-gray-700 dark:text-gray-400"
+          class="text-xs text-gray-700 uppercase bg-indigo-100"
         >
           <tr>
             <th scope="col" class="px-6 py-3">#</th>
@@ -172,21 +172,21 @@
         <tbody>
           @for (producto of productosSeleccionados; track $index) {
           <tr
-            class="bg-gray-100 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+            class="bg-gray-100 border-b hover:bg-gray-50"
           >
           <td class="px-6 py-4 text-gray-900">{{$index+1}}</td>
-            <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+            <td class="px-6 py-4 font-semibold text-gray-900">
               {{ producto.name }}
             </td>
             <td class="px-6 py-4 text-gray-900">1</td>
-            <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+            <td class="px-6 py-4 font-semibold text-gray-900">
               {{ producto.price }}
             </td>
           </tr>
           }
         </tbody>
         <tfoot>
-          <tr class="font-semibold text-gray-900 dark:text-white">
+          <tr class="font-semibold text-gray-900">
               <td></td>
               <th scope="row" class="px-6 py-3 text-base">Total</th>
               <td class="px-6 py-3">{{productosSeleccionados.length}}</td>
@@ -200,7 +200,7 @@
   <div class="mt-6 flex items-center justify-center space-x-2">
     <button
       type="submit"
-      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2"
     >
     <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
       <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
@@ -212,7 +212,7 @@
       <button
         type="button"
         (click)="generarPDF()"
-        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2"
       >
         Generar PDF
       </button>
