@@ -9,6 +9,7 @@ import {
   AbstractControl,
 } from '@angular/forms';
 import { ExportFileService } from '../../services/export-file.service';
+import { IBuyForm, IProduct, IUSer } from '../../models/data.model';
 
 @Component({
   selector: 'app-forms',
@@ -21,22 +22,22 @@ export class FormsComponent implements OnInit {
   buyForm: FormGroup; // Formulario de compra
   typeID!: string; // Tipo de documento
   cantSelectProducts: number = 0;
-  productosSeleccionados: any;
+  productosSeleccionados!: IProduct[];
   IsVisibleButtonPrint: boolean = false;
-  dataForm: any;
+  dataForm!: IUSer;
 
   private _exportFileService = inject(ExportFileService);
 
-  products = [
-    { id: 1, name: 'Papas rizadas', price: '$3200' },
-    { id: 2, name: 'Papas margaritas', price: '$3000' },
+  products: IProduct[] = [
+    { id: 1, name: 'Papas rizadas', price: '$32000' },
+    { id: 2, name: 'Papas margaritas', price: '$30000' },
     { id: 3, name: 'Papas BBQ', price: '$3500' },
-    { id: 4, name: 'Cheetos de queso', price: '$2000' },
-    { id: 5, name: 'Cheetos picante', price: '$2000' },
-    { id: 6, name: 'Doritos', price: '$3600' },
-    { id: 7, name: 'Boliqueso', price: '$3500' },
-    { id: 8, name: 'De todito natural', price: '$4000' },
-    { id: 9, name: 'De todito BBQ', price: '$4000' },
+    { id: 4, name: 'Cheetos de queso', price: '$20000' },
+    { id: 5, name: 'Cheetos picante', price: '$20000' },
+    { id: 6, name: 'Doritos', price: '$36000' },
+    { id: 7, name: 'Boliqueso', price: '$35000' },
+    { id: 8, name: 'De todito natural', price: '$40000' },
+    { id: 9, name: 'De todito BBQ', price: '$40000' },
   ];
 
   constructor(private formBuilder: FormBuilder) {
@@ -78,6 +79,11 @@ export class FormsComponent implements OnInit {
     };
   }
 
+  // Convertir el valor del formulario a la interfaz IBuyForm
+  getBuyFormValue(): IBuyForm {
+    return this.buyForm.value as IBuyForm;
+  }
+
   // Generar PDF
   generarPDF() {
     this._exportFileService.generatePDF(
@@ -104,10 +110,10 @@ export class FormsComponent implements OnInit {
         }));
       
       this.dataForm = formValues;
-      this.productosSeleccionados = selectedProducts;
+      this.productosSeleccionados = selectedProducts;     
 
       // Crear un objeto con los datos completos
-      const result = {
+      const result: IBuyForm = {
         ...formValues,
         selectedProducts: selectedProducts,
       };
@@ -117,6 +123,17 @@ export class FormsComponent implements OnInit {
       this.IsVisibleButtonPrint = true;
       this.buyForm.reset(); // Resetear el formulario
     }
+  }
+
+  // Suma total
+  calcularTotalAPagar(): number {
+    let total = 0;
+    for (const product of this.productosSeleccionados) {
+      // Elimina el signo "$"
+      const priceWithoutSymbol = Number(product.price.replace('$', ''));
+      total += priceWithoutSymbol;
+    }
+    return total;
   }
 
   // Verificación de datos inválidos en los campos

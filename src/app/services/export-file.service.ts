@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { jsPDF } from 'jspdf';
+import { IUSer } from '../models/data.model';
 
 @Injectable({
   providedIn: 'root',
@@ -30,7 +31,7 @@ export class ExportFileService {
 
   constructor() {}
 
-  generatePDF(formData: any, selectedProducts: any[]) {
+  generatePDF(formData: IUSer, selectedProducts: any[]) {
     const doc = new jsPDF(); // Objeto pra PDF
     const nameCompany = 'Distribuidora MECATICO COMPANY';
     const pageWidth = doc.internal.pageSize.getWidth(); // Centrar texto
@@ -48,7 +49,7 @@ export class ExportFileService {
     doc.text(`Nombre: ${formData.name} ${formData.lastname}`, this.col, this.row+=10);
     doc.text(`Teléfono: ${formData.phone}`, this.col, this.row+=10);
     doc.setFont('helvetica', 'bold'); // Texto en negrita
-    doc.text('Productos ordenados:', this.col, this.row+=20);
+    doc.text('Productos ordenados (paquetes de 10 unidades):', this.col, this.row+=20);
     doc.setFont('helvetica', 'normal'); // Texto normal
 
     let total: number = 0;
