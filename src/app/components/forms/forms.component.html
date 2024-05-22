@@ -1,4 +1,4 @@
-<form [formGroup]="buyForm" class="max-w-sm mx-auto" (ngSubmit)="ordenar()">
+<form [formGroup]="buyForm" class="max-w-lg mx-auto" (ngSubmit)="generarOrdenDeCompra()">
   <div class="mb-5">
     <label
       for="typeID"
@@ -12,7 +12,7 @@
       [ngClass]="{
         'border-red-500': hasErrors('typeID', 'required'),
         'border-green-600':
-          !hasErrors('typeID', 'required') && tocarCampo('typeID')
+          !hasErrors('typeID', 'required') && wasItTouched('typeID')
       }"
     >
       <option selected value="Cédula">Cédula</option>
@@ -36,7 +36,7 @@
         'border-red-500':
           hasErrors('numID', 'required') || hasErrors('numID', 'minlength'),
         'border-green-600':
-          !hasErrors('numID', 'required') && tocarCampo('numID')
+          !hasErrors('numID', 'required') && wasItTouched('numID')
       }"
     />
     @if (hasErrors('numID','required')) {
@@ -62,7 +62,7 @@
         'border-red-500':
           hasErrors('phone', 'required') || hasErrors('phone', 'minlength'),
         'border-green-600':
-          !hasErrors('phone', 'required') && tocarCampo('phone')
+          !hasErrors('phone', 'required') && wasItTouched('phone')
       }"
     />
     @if (hasErrors('phone','required')) {
@@ -71,10 +71,34 @@
     <span class="text-red-600 text-sm">* Mínimo 10 caracteres</span>
     }
   </div>
+
+  <label
+    for="checkboxes"
+    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    >Seleccione los productos a ordenar:</label
+  >
+  <ul formArrayName="checkboxes" class="grid w-full my-2 gap-6 md:grid-cols-3">
+    @for (product of products; track $index) {
+      <li>
+          <input type="checkbox" id="{{product.id}}" [formControlName]="$index" value="{{product.name}}" class="hidden peer" required="">
+          <label for="{{product.id}}" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+              <div class="block">
+                <div class="w-full text-sm font-semibold">{{product.name}}</div>
+                  <div class="w-full text-sm">{{product.price}}</div>
+              </div>
+          </label>
+      </li>
+    }
+  </ul>
+  @if (cantSelectProducts < 3) {
+    <span class="text-red-600 text-sm">* Mínimo 3 productos para generar la orden de compra</span>
+    <br>
+  }
+
   <button
     type="submit"
-    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    class="text-white mt-6 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
   >
-    Ordenar
+  Generar orden de compra
   </button>
 </form>
