@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -8,6 +8,7 @@ import {
   FormArray,
   AbstractControl,
 } from '@angular/forms';
+import { ExportFileService } from '../../services/export-file.service';
 
 @Component({
   selector: 'app-forms',
@@ -20,6 +21,11 @@ export class FormsComponent implements OnInit {
   buyForm: FormGroup; // Formulario de compra
   typeID!: string; // Tipo de documento
   cantSelectProducts: number = 0;
+  productosSeleccionados: any;
+  IsVisibleButtonPrint: boolean = false;
+  dataForm: any;
+
+  private _exportFileService = inject(ExportFileService);
 
   products = [
     { id: 1, name: 'Papas rizadas', price: '$3200' },
@@ -70,6 +76,14 @@ export class FormsComponent implements OnInit {
     };
   }
 
+  // Generar PDF
+  generarPDF() {
+    this._exportFileService.generatePDF(
+      this.dataForm,
+      this.productosSeleccionados
+    );
+  }
+
   // Submit
   generarOrdenDeCompra() {
     const formValues = this.buyForm.value;
@@ -86,6 +100,9 @@ export class FormsComponent implements OnInit {
           name: product.name,
           price: product.price,
         }));
+      
+      this.dataForm = formValues;
+      this.productosSeleccionados = selectedProducts;
 
       // Crear un objeto con los datos completos
       const result = {
@@ -95,6 +112,7 @@ export class FormsComponent implements OnInit {
 
       delete result.checkboxes; // Eliminar el array de checkboxes del objeto
       console.log('Form Values:', result); // Mostrar los datos ingresados
+      this.IsVisibleButtonPrint = true;
       this.buyForm.reset(); // Resetear el formulario
     }
   }
