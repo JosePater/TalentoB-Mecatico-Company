@@ -34,15 +34,17 @@
       placeholder="1100500600"
       [ngClass]="{
         'border-red-500':
-          hasErrors('numID', 'required') || hasErrors('numID', 'minlength'),
+          hasErrors('numID', 'required') || hasErrors('numID', 'minlength') || hasErrors('numID', 'pattern'),
         'border-green-600':
           !hasErrors('numID', 'required') && wasItTouched('numID')
       }"
     />
     @if (hasErrors('numID','required')) {
     <span class="text-red-600 text-sm">* Número de {{ typeID }} requerido</span>
-    } @if (hasErrors('numID', 'minlength')) {
-    <span class="text-red-600 text-sm">* Mínimo 6 caracteres</span>
+    } @if (hasErrors('numID', 'pattern')) {
+      <span class="text-red-600 text-sm">* Ingrese solo números</span>
+    } @else if (hasErrors('numID', 'minlength')) {
+      <span class="text-red-600 text-sm">* Mínimo 6 caracteres </span>
     }
   </div>
   }
@@ -113,15 +115,17 @@
       placeholder="321 456 7890"
       [ngClass]="{
         'border-red-500':
-          hasErrors('phone', 'required') || hasErrors('phone', 'minlength'),
+          hasErrors('phone', 'required') || hasErrors('phone', 'minlength') || hasErrors('phone', 'pattern'),
         'border-green-600':
           !hasErrors('phone', 'required') && wasItTouched('phone')
       }"
     />
     @if (hasErrors('phone','required')) {
-    <span class="text-red-600 text-sm">* Número de teléfono requerido</span>
-    } @if (hasErrors('phone', 'minlength')) {
-    <span class="text-red-600 text-sm">* Mínimo 10 caracteres</span>
+      <span class="text-red-600 text-sm">* Número de teléfono requerido</span>
+    } @if (hasErrors('phone', 'pattern')) {
+      <span class="text-red-600 text-sm">* Ingrese solo números</span>
+    } @else if (hasErrors('phone', 'minlength')) {
+      <span class="text-red-600 text-sm">* Mínimo 10 caracteres</span>
     }
   </div>
 

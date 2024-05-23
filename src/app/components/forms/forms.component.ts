@@ -31,7 +31,7 @@ export class FormsComponent implements OnInit {
   products: IProduct[] = [
     { id: 1, name: 'Papas rizadas', price: '$32000' },
     { id: 2, name: 'Papas margaritas', price: '$30000' },
-    { id: 3, name: 'Papas BBQ', price: '$3500' },
+    { id: 3, name: 'Papas BBQ', price: '$35000' },
     { id: 4, name: 'Cheetos de queso', price: '$20000' },
     { id: 5, name: 'Cheetos picante', price: '$20000' },
     { id: 6, name: 'Doritos', price: '$36000' },
@@ -43,10 +43,10 @@ export class FormsComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {
     this.buyForm = this.formBuilder.group({
       typeID: ['', Validators.required],
-      numID: ['', [Validators.required, Validators.minLength(6)]],
+      numID: ['', [Validators.required, Validators.minLength(6), Validators.pattern('^[0-9]*$')]],
       name: ['', [Validators.required, Validators.minLength(3)]],
       lastname: ['', [Validators.required, Validators.minLength(3)]],
-      phone: ['', [Validators.required, Validators.minLength(10)]],
+      phone: ['', [Validators.required, Validators.minLength(10), Validators.pattern('^[0-9+]*$')]],
       checkboxes: this.formBuilder.array([], [this.minSelectedCheckboxes(3)]),
     });
 
